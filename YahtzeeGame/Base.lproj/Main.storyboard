@@ -53,6 +53,9 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="rollButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f5n-eA-4ZH"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Rolls Left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bE-BI-Wuq">
                                 <rect key="frame" x="0.0" y="215" width="375" height="17.5"/>
@@ -232,48 +235,42 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tG8-1g-VCe">
-                                                <rect key="frame" x="0.0" y="39.5" width="10.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="45" width="10.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qp7-OC-ygM">
-                                                <rect key="frame" x="0.0" y="78.5" width="10.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="89.5" width="10.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWc-Dp-Ift">
-                                                <rect key="frame" x="0.0" y="118" width="10.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="134.5" width="10.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bi-Ln-Ua8">
-                                                <rect key="frame" x="0.0" y="157" width="10.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="179.5" width="10.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3K-bT-s6G">
-                                                <rect key="frame" x="0.0" y="196.5" width="10.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="224.5" width="10.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXl-Ef-QV5">
-                                                <rect key="frame" x="0.0" y="235.5" width="10.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="269" width="10.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLD-gm-YBU">
-                                                <rect key="frame" x="0.0" y="275" width="10.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0q-kx-0nB">
                                                 <rect key="frame" x="0.0" y="314" width="10.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -325,6 +322,46 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="bonusLabel" destination="E2c-NR-sXj" id="lJD-UQ-Cgt"/>
+                        <outlet property="bonusValue" destination="Rsu-NF-0I6" id="T9h-Zx-LKY"/>
+                        <outlet property="bottomTotalLabel" destination="hDB-dE-Mkp" id="Wd5-Yb-ADR"/>
+                        <outlet property="bottomTotalValue" destination="gLD-gm-YBU" id="m5z-8c-ST2"/>
+                        <outlet property="chanceLabel" destination="6Dw-so-dwc" id="DjK-PM-fo6"/>
+                        <outlet property="chanceValue" destination="YXl-Ef-QV5" id="7Wh-5O-vbu"/>
+                        <outlet property="diceFive" destination="jwi-Pm-arj" id="LLK-eT-jUK"/>
+                        <outlet property="diceFour" destination="Beu-o9-1I3" id="J6T-Jv-Woo"/>
+                        <outlet property="diceOne" destination="gzF-K4-tSO" id="P1E-ag-rGy"/>
+                        <outlet property="diceThree" destination="VHh-3e-aMd" id="Y5v-oj-7A2"/>
+                        <outlet property="diceTwo" destination="vbL-EP-7Fe" id="YLE-hH-iJg"/>
+                        <outlet property="fivesLabel" destination="SiE-i0-qea" id="LQ6-FX-22N"/>
+                        <outlet property="fivesValue" destination="HCW-JI-yeS" id="W6l-yz-a8s"/>
+                        <outlet property="fourKindLabel" destination="Xb9-Mk-gvB" id="qE7-5K-nDU"/>
+                        <outlet property="fourKindValue" destination="tG8-1g-VCe" id="c1a-sX-jO0"/>
+                        <outlet property="foursLabel" destination="VcC-H0-3n1" id="Q5f-zb-bxc"/>
+                        <outlet property="foursValue" destination="yKA-U0-Blg" id="KwC-VY-WKb"/>
+                        <outlet property="fullHouseValue" destination="Qp7-OC-ygM" id="S2Y-sj-tER"/>
+                        <outlet property="fullLabel" destination="wqu-Wu-cKR" id="7f7-hJ-kYX"/>
+                        <outlet property="lgStraightLabel" destination="zMu-vM-GfX" id="6tJ-Ge-DMF"/>
+                        <outlet property="lgStraightValue" destination="8bi-Ln-Ua8" id="o2P-BO-bhM"/>
+                        <outlet property="onesLabel" destination="XMl-m1-G8r" id="I5f-1Z-tD3"/>
+                        <outlet property="onesValue" destination="Ymb-8e-Z45" id="wAJ-JA-e0t"/>
+                        <outlet property="rollsLeft" destination="7bE-BI-Wuq" id="vyu-AN-IlQ"/>
+                        <outlet property="sixesLabel" destination="Rhm-lP-Y6a" id="MmQ-uh-Cgn"/>
+                        <outlet property="sixesValue" destination="uIM-1j-zb6" id="vW9-b2-IMP"/>
+                        <outlet property="smStraightLabel" destination="fKz-Fb-EVV" id="vzO-wW-6uF"/>
+                        <outlet property="smStraightValue" destination="SWc-Dp-Ift" id="9hO-Gb-ZXJ"/>
+                        <outlet property="threeKindLabel" destination="ee0-FQ-Ze5" id="4Z0-IX-Jdn"/>
+                        <outlet property="threeKindValue" destination="lfs-fS-odi" id="ZRo-lF-8Hn"/>
+                        <outlet property="threesLabel" destination="sUt-Td-9zS" id="hIG-9X-lSh"/>
+                        <outlet property="threesValue" destination="FWt-u2-tgx" id="hYQ-R5-dqh"/>
+                        <outlet property="topTotalLabel" destination="1Rp-Vy-sYA" id="kuE-oZ-SuD"/>
+                        <outlet property="topTotalValue" destination="X10-ln-VGf" id="9a2-RB-dxu"/>
+                        <outlet property="twosLabel" destination="FIl-mE-k6t" id="Y9V-zT-uXb"/>
+                        <outlet property="twosValue" destination="tBZ-Kc-N5W" id="lLB-lB-kaF"/>
+                        <outlet property="yahtzeeLabel" destination="Tri-ya-4FD" id="44G-2H-n6C"/>
+                        <outlet property="yahtzeeValue" destination="L3K-bT-s6G" id="CPy-JR-Lav"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
