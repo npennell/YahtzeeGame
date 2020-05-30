@@ -63,10 +63,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var rollsLeft: UILabel!
     
     var dieOneClicked:Bool = false
-    //var dieTwoClicked:Bool = false
-    //var dieThreeClicked:Bool = false
-    //var dieFourClicked:Bool = false
-    //var dieFiveClicked:Bool = false
+    var dieTwoClicked:Bool = false
+    var dieThreeClicked:Bool = false
+    var dieFourClicked:Bool = false
+    var dieFiveClicked:Bool = false
     
     
     override func viewDidLoad() {
@@ -83,14 +83,68 @@ class ViewController: UIViewController {
         let dieFourNum =  Int.random(in: 1...6)
         let dieFiveNum = Int.random(in: 1...6)
         
-        diceOne.setImage(UIImage(named: "Dice\(dieOneNum)"), for: .normal)
-        diceTwo.setImage(UIImage(named: "Dice\(dieTwoNum)"), for: .normal)
-        diceThree.setImage(UIImage(named: "Dice\(dieThreeNum)"), for: .normal)
-        diceFour.setImage(UIImage(named: "Dice\(dieFourNum)"), for: .normal)
-        diceFive.setImage(UIImage(named: "Dice\(dieFiveNum)"), for: .normal)
-        
+        if dieOneClicked == false {
+            diceOne.setImage(UIImage(named: "Dice\(dieOneNum)"), for: .normal)
+        }
+        if dieTwoClicked == false {
+            diceTwo.setImage(UIImage(named: "Dice\(dieTwoNum)"), for: .normal)
+        }
+        if dieThreeClicked == false {
+            diceThree.setImage(UIImage(named: "Dice\(dieThreeNum)"), for: .normal)
+        }
+        if dieFourClicked == false {
+            diceFour.setImage(UIImage(named: "Dice\(dieFourNum)"), for: .normal)
+        }
+        if dieFiveClicked == false {
+            diceFive.setImage(UIImage(named: "Dice\(dieFiveNum)"), for: .normal)
+        }
     }
     
+    //function to roll/not roll die one depending on if clicked
+    @IBAction func diceOneClicked(_ sender: Any) {
+        if dieOneClicked == false {
+            dieOneClicked = true
+        }
+        else {
+            dieOneClicked = false
+        }
+    }
+    
+    @IBAction func diceTwoClicked(_ sender: Any) {
+        if dieTwoClicked == false {
+            dieTwoClicked = true
+        }
+        else {
+            dieTwoClicked = false
+        }
+    }
+    
+    @IBAction func diceThreeClicked(_ sender: Any) {
+        if dieThreeClicked == false {
+            dieThreeClicked = true
+        }
+        else {
+            dieThreeClicked = false
+        }
+    }
+    
+    @IBAction func diceFourClicked(_ sender: Any) {
+        if dieFourClicked == false {
+            dieFourClicked = true
+        }
+        else {
+            dieFourClicked = false
+        }
+    }
+    
+    @IBAction func diceFiveClicked(_ sender: Any) {
+        if dieFiveClicked == false {
+            dieFiveClicked = true
+        }
+        else {
+            dieFiveClicked = false
+        }
+    }
     
     
 }

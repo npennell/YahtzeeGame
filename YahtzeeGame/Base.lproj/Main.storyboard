@@ -31,22 +31,37 @@
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQ6-KF-7qV">
                                         <rect key="frame" x="0.0" y="0.0" width="63" height="98"/>
                                         <state key="normal" image="Dice1"/>
+                                        <connections>
+                                            <action selector="diceOneClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JJt-KM-S3V"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgp-QG-xH7">
                                         <rect key="frame" x="73" y="0.0" width="63" height="98"/>
                                         <state key="normal" image="Dice1"/>
+                                        <connections>
+                                            <action selector="diceTwoClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TZY-KT-qUm"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNU-di-3A2">
                                         <rect key="frame" x="146" y="0.0" width="63" height="98"/>
                                         <state key="normal" image="Dice1"/>
+                                        <connections>
+                                            <action selector="diceThreeClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m9y-az-aK5"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXI-yg-uIr">
                                         <rect key="frame" x="219" y="0.0" width="63" height="98"/>
                                         <state key="normal" image="Dice1"/>
+                                        <connections>
+                                            <action selector="diceFourClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bDc-Xx-fBG"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYq-ZN-WDX">
                                         <rect key="frame" x="292" y="0.0" width="63" height="98"/>
                                         <state key="normal" image="Dice1"/>
+                                        <connections>
+                                            <action selector="diceFiveClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9KW-O4-epa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
