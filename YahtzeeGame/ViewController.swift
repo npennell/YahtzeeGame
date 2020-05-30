@@ -61,6 +61,11 @@ class ViewController: UIViewController {
     //various labels/buttons
     @IBOutlet weak var rollsLeft: UILabel!
     
+    var dieOneClicked:Bool = false
+    //var dieTwoClicked:Bool = false
+    //var dieThreeClicked:Bool = false
+    //var dieFourClicked:Bool = false
+    //var dieFiveClicked:Bool = false
     
     
     override func viewDidLoad() {
@@ -68,9 +73,22 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    //Roll Button clicked
+    //randomly generates roll for the five dice
     @IBAction func rollButton(_ sender: Any) {
+        let dieOneNum = Int.random(in: 1...6)
+        let dieTwoNum = Int.random(in: 1...6)
+        let dieThreeNum = Int.random(in: 1...6)
+        let dieFourNum =  Int.random(in: 1...6)
+        let dieFiveNum = Int.random(in: 1...6)
         
+        diceOne.image = UIImage(named: "Dice\(dieOneNum)")
+        diceTwo.image = UIImage(named: "Dice\(dieTwoNum)")
+        diceThree.image = UIImage(named: "Dice\(dieThreeNum)")
+        diceFour.image = UIImage(named: "Dice\(dieFourNum)")
+        diceFive.image = UIImage(named: "Dice\(dieFiveNum)")
     }
+    
     
     
 }
