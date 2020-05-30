@@ -25,24 +25,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FDB-LH-1ea" userLabel="Dice Stack View">
+                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FDB-LH-1ea" userLabel="Dice Stack View">
                                 <rect key="frame" x="10" y="65" width="355" height="98"/>
                                 <subviews>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dice1" translatesAutoresizingMaskIntoConstraints="NO" id="gzF-K4-tSO">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQ6-KF-7qV">
                                         <rect key="frame" x="0.0" y="0.0" width="63" height="98"/>
-                                    </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dice1" translatesAutoresizingMaskIntoConstraints="NO" id="vbL-EP-7Fe">
+                                        <state key="normal" image="Dice1"/>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgp-QG-xH7">
                                         <rect key="frame" x="73" y="0.0" width="63" height="98"/>
-                                    </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dice1" translatesAutoresizingMaskIntoConstraints="NO" id="VHh-3e-aMd">
+                                        <state key="normal" image="Dice1"/>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNU-di-3A2">
                                         <rect key="frame" x="146" y="0.0" width="63" height="98"/>
-                                    </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dice1" translatesAutoresizingMaskIntoConstraints="NO" id="Beu-o9-1I3">
+                                        <state key="normal" image="Dice1"/>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXI-yg-uIr">
                                         <rect key="frame" x="219" y="0.0" width="63" height="98"/>
-                                    </imageView>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dice1" translatesAutoresizingMaskIntoConstraints="NO" id="jwi-Pm-arj">
+                                        <state key="normal" image="Dice1"/>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYq-ZN-WDX">
                                         <rect key="frame" x="292" y="0.0" width="63" height="98"/>
-                                    </imageView>
+                                        <state key="normal" image="Dice1"/>
+                                    </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Yt-V3-H7r">
@@ -329,11 +334,11 @@
                         <outlet property="bottomTotalValue" destination="gLD-gm-YBU" id="m5z-8c-ST2"/>
                         <outlet property="chanceLabel" destination="6Dw-so-dwc" id="DjK-PM-fo6"/>
                         <outlet property="chanceValue" destination="YXl-Ef-QV5" id="7Wh-5O-vbu"/>
-                        <outlet property="diceFive" destination="jwi-Pm-arj" id="LLK-eT-jUK"/>
-                        <outlet property="diceFour" destination="Beu-o9-1I3" id="J6T-Jv-Woo"/>
-                        <outlet property="diceOne" destination="gzF-K4-tSO" id="P1E-ag-rGy"/>
-                        <outlet property="diceThree" destination="VHh-3e-aMd" id="Y5v-oj-7A2"/>
-                        <outlet property="diceTwo" destination="vbL-EP-7Fe" id="YLE-hH-iJg"/>
+                        <outlet property="diceFive" destination="dYq-ZN-WDX" id="fdR-yd-3yE"/>
+                        <outlet property="diceFour" destination="iXI-yg-uIr" id="UMz-en-KDa"/>
+                        <outlet property="diceOne" destination="aQ6-KF-7qV" id="WAL-78-zJX"/>
+                        <outlet property="diceThree" destination="eNU-di-3A2" id="coj-eJ-TkK"/>
+                        <outlet property="diceTwo" destination="Qgp-QG-xH7" id="zOr-qh-hip"/>
                         <outlet property="fivesLabel" destination="SiE-i0-qea" id="LQ6-FX-22N"/>
                         <outlet property="fivesValue" destination="HCW-JI-yeS" id="W6l-yz-a8s"/>
                         <outlet property="fourKindLabel" destination="Xb9-Mk-gvB" id="qE7-5K-nDU"/>

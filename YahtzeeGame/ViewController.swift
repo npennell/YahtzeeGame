@@ -11,11 +11,12 @@ import UIKit
 class ViewController: UIViewController {
     
     //Dice Outlets
-    @IBOutlet weak var diceOne: UIImageView!
-    @IBOutlet weak var diceTwo: UIImageView!
-    @IBOutlet weak var diceThree: UIImageView!
-    @IBOutlet weak var diceFour: UIImageView!
-    @IBOutlet weak var diceFive: UIImageView!
+    @IBOutlet weak var diceOne: UIButton!
+    @IBOutlet weak var diceTwo: UIButton!
+    @IBOutlet weak var diceThree: UIButton!
+    @IBOutlet weak var diceFour: UIButton!
+    @IBOutlet weak var diceFive: UIButton!
+    
     
     //Scoreboard
     //Top Score Labels
@@ -82,11 +83,12 @@ class ViewController: UIViewController {
         let dieFourNum =  Int.random(in: 1...6)
         let dieFiveNum = Int.random(in: 1...6)
         
-        diceOne.image = UIImage(named: "Dice\(dieOneNum)")
-        diceTwo.image = UIImage(named: "Dice\(dieTwoNum)")
-        diceThree.image = UIImage(named: "Dice\(dieThreeNum)")
-        diceFour.image = UIImage(named: "Dice\(dieFourNum)")
-        diceFive.image = UIImage(named: "Dice\(dieFiveNum)")
+        diceOne.setImage(UIImage(named: "Dice\(dieOneNum)"), for: .normal)
+        diceTwo.setImage(UIImage(named: "Dice\(dieTwoNum)"), for: .normal)
+        diceThree.setImage(UIImage(named: "Dice\(dieThreeNum)"), for: .normal)
+        diceFour.setImage(UIImage(named: "Dice\(dieFourNum)"), for: .normal)
+        diceFive.setImage(UIImage(named: "Dice\(dieFiveNum)"), for: .normal)
+        
     }
     
     
