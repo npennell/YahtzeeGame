@@ -11,12 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     
     //Dice Outlets
-    @IBOutlet weak var diceOne: UIButton!
-    @IBOutlet weak var diceTwo: UIButton!
-    @IBOutlet weak var diceThree: UIButton!
-    @IBOutlet weak var diceFour: UIButton!
-    @IBOutlet weak var diceFive: UIButton!
-    
+    @IBOutlet weak var diceOne: UIImageView!
+    @IBOutlet weak var diceTwo: UIImageView!
+    @IBOutlet weak var diceThree: UIImageView!
+    @IBOutlet weak var diceFour: UIImageView!
+    @IBOutlet weak var diceFive: UIImageView!
     
     //Scoreboard
     //Top Score Labels
@@ -80,9 +79,30 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    
+        //setting up dice gestures
+        let diceOneTapped = UITapGestureRecognizer.init(target: self, action: #selector(diceOneClicked))
+        diceOneTapped.numberOfTapsRequired = 1
+        diceOne.addGestureRecognizer(diceOneTapped)
         
-        //onesLabel.isUserInteractionEnabled = true
+        let diceTwoTapped = UITapGestureRecognizer.init(target: self, action: #selector(diceTwoClicked))
+        diceTwoTapped.numberOfTapsRequired = 1
+        diceTwo.addGestureRecognizer(diceTwoTapped)
+        
+        let diceThreeTapped = UITapGestureRecognizer.init(target: self, action: #selector(diceThreeClicked))
+        diceThreeTapped.numberOfTapsRequired = 1
+        diceThree.addGestureRecognizer(diceThreeTapped)
+        
+        let diceFourTapped = UITapGestureRecognizer.init(target: self, action: #selector(diceFourClicked))
+        diceFourTapped.numberOfTapsRequired = 1
+        diceFour.addGestureRecognizer(diceFourTapped)
+        
+        let diceFiveTapped = UITapGestureRecognizer.init(target: self, action: #selector(diceFiveClicked))
+        diceFiveTapped.numberOfTapsRequired = 1
+        diceFive.addGestureRecognizer(diceFiveTapped)
+        
+        
+        //setting up score label gestures
         let oneLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(oneLabelClicked))
         oneLabelTapped.numberOfTapsRequired = 1
         onesLabel.addGestureRecognizer(oneLabelTapped)
@@ -101,19 +121,19 @@ class ViewController: UIViewController {
             dieFiveNum = Int.random(in: 1...6)
             
             if dieOneClicked == false {
-                diceOne.setImage(UIImage(named: "Dice\(dieOneNum)"), for: .normal)
+                diceOne.image = UIImage(named: "Dice\(dieOneNum)")
             }
             if dieTwoClicked == false {
-                diceTwo.setImage(UIImage(named: "Dice\(dieTwoNum)"), for: .normal)
+                diceTwo.image = UIImage(named: "Dice\(dieTwoNum)")
             }
             if dieThreeClicked == false {
-                diceThree.setImage(UIImage(named: "Dice\(dieThreeNum)"), for: .normal)
+                diceThree.image = UIImage(named: "Dice\(dieThreeNum)")
             }
             if dieFourClicked == false {
-                diceFour.setImage(UIImage(named: "Dice\(dieFourNum)"), for: .normal)
+                diceFour.image = UIImage(named: "Dice\(dieFourNum)")
             }
             if dieFiveClicked == false {
-                diceFive.setImage(UIImage(named: "Dice\(dieFiveNum)"), for: .normal)
+                diceFive.image = UIImage(named: "Dice\(dieFiveNum)")
             }
             
             //decreas number of rolls remaining
@@ -125,8 +145,8 @@ class ViewController: UIViewController {
         }
     }
     
-    //function to roll/not roll die one depending on if clicked
-    @IBAction func diceOneClicked(_ sender: Any) {
+    //Functionality of dice when clicked
+    @objc func diceOneClicked(){
         if dieOneClicked == false {
             dieOneClicked = true
         }
@@ -135,7 +155,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func diceTwoClicked(_ sender: Any) {
+    @objc func diceTwoClicked(){
         if dieTwoClicked == false {
             dieTwoClicked = true
         }
@@ -144,7 +164,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func diceThreeClicked(_ sender: Any) {
+    @objc func diceThreeClicked(){
         if dieThreeClicked == false {
             dieThreeClicked = true
         }
@@ -153,7 +173,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func diceFourClicked(_ sender: Any) {
+    @objc func diceFourClicked(){
         if dieFourClicked == false {
             dieFourClicked = true
         }
@@ -162,7 +182,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func diceFiveClicked(_ sender: Any) {
+    @objc func diceFiveClicked(){
         if dieFiveClicked == false {
             dieFiveClicked = true
         }
@@ -173,8 +193,55 @@ class ViewController: UIViewController {
     
     //Scoring
     @objc func oneLabelClicked(){
-        onesValue.text = "3"
+        if onesValue.text == "0"{
+            onesValue.text = "1"
+            rollsRemaining = 3
+            resetRoll()
+        }
     }
     
+    @objc func twoLabelClicked(){
+        if twosValue.text == "0"{
+            twosValue.text = "2"
+            rollsRemaining = 3
+            resetRoll()
+        }
+    }
+    
+    @objc func threeLabelClicked(){
+        if threesValue.text == "0"{
+            threesValue.text = "3"
+            rollsRemaining = 3
+            resetRoll()
+        }
+    }
+    
+    @objc func fourLabelClicked(){
+        if foursValue.text == "0"{
+            foursValue.text = "4"
+            rollsRemaining = 3
+            resetRoll()
+        }
+    }
+    
+    @objc func fiveLabelClicked(){
+        if fivesValue.text == "0"{
+            fivesValue.text = "5"
+            rollsRemaining = 3
+            resetRoll()
+        }
+    }
+    
+    
+    func resetRoll(){
+        rollsLeft.text = "\(rollsRemaining) Rolls Left"
+        
+        //reset the dice clicks
+        dieOneClicked = false
+        dieTwoClicked = false
+        dieThreeClicked = false
+        dieFourClicked = false
+        dieFiveClicked = false
+    }
 }
 
