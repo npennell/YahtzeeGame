@@ -62,12 +62,21 @@ class ViewController: UIViewController {
     //various labels/buttons
     @IBOutlet weak var rollsLeft: UILabel!
     
+    //die values
+    var dieOneNum = 1
+    var dieTwoNum = 1
+    var dieThreeNum = 1
+    var dieFourNum = 1
+    var dieFiveNum = 1
+    
+    //Check if dice have been clicked
     var dieOneClicked:Bool = false
     var dieTwoClicked:Bool = false
     var dieThreeClicked:Bool = false
     var dieFourClicked:Bool = false
     var dieFiveClicked:Bool = false
     
+    var rollsRemaining = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,11 +86,11 @@ class ViewController: UIViewController {
     //Roll Button clicked
     //randomly generates roll for the five dice
     @IBAction func rollButton(_ sender: Any) {
-        let dieOneNum = Int.random(in: 1...6)
-        let dieTwoNum = Int.random(in: 1...6)
-        let dieThreeNum = Int.random(in: 1...6)
-        let dieFourNum =  Int.random(in: 1...6)
-        let dieFiveNum = Int.random(in: 1...6)
+        dieOneNum = Int.random(in: 1...6)
+        dieTwoNum = Int.random(in: 1...6)
+        dieThreeNum = Int.random(in: 1...6)
+        dieFourNum =  Int.random(in: 1...6)
+        dieFiveNum = Int.random(in: 1...6)
         
         if dieOneClicked == false {
             diceOne.setImage(UIImage(named: "Dice\(dieOneNum)"), for: .normal)
@@ -98,6 +107,10 @@ class ViewController: UIViewController {
         if dieFiveClicked == false {
             diceFive.setImage(UIImage(named: "Dice\(dieFiveNum)"), for: .normal)
         }
+        
+        //decreas number of rolls remaining
+        rollsRemaining -= 1
+        rollsLeft.text = "\(rollsRemaining) Rolls Left"
     }
     
     //function to roll/not roll die one depending on if clicked
