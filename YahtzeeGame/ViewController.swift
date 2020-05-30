@@ -81,36 +81,48 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //onesLabel.isUserInteractionEnabled = true
+        let oneLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(oneLabelClicked))
+        oneLabelTapped.numberOfTapsRequired = 1
+        onesLabel.addGestureRecognizer(oneLabelTapped)
     }
 
     //Roll Button clicked
     //randomly generates roll for the five dice
     @IBAction func rollButton(_ sender: Any) {
-        dieOneNum = Int.random(in: 1...6)
-        dieTwoNum = Int.random(in: 1...6)
-        dieThreeNum = Int.random(in: 1...6)
-        dieFourNum =  Int.random(in: 1...6)
-        dieFiveNum = Int.random(in: 1...6)
-        
-        if dieOneClicked == false {
-            diceOne.setImage(UIImage(named: "Dice\(dieOneNum)"), for: .normal)
+        //don't re-roll if no more rolls left
+        if rollsRemaining > 0 {
+            
+            dieOneNum = Int.random(in: 1...6)
+            dieTwoNum = Int.random(in: 1...6)
+            dieThreeNum = Int.random(in: 1...6)
+            dieFourNum =  Int.random(in: 1...6)
+            dieFiveNum = Int.random(in: 1...6)
+            
+            if dieOneClicked == false {
+                diceOne.setImage(UIImage(named: "Dice\(dieOneNum)"), for: .normal)
+            }
+            if dieTwoClicked == false {
+                diceTwo.setImage(UIImage(named: "Dice\(dieTwoNum)"), for: .normal)
+            }
+            if dieThreeClicked == false {
+                diceThree.setImage(UIImage(named: "Dice\(dieThreeNum)"), for: .normal)
+            }
+            if dieFourClicked == false {
+                diceFour.setImage(UIImage(named: "Dice\(dieFourNum)"), for: .normal)
+            }
+            if dieFiveClicked == false {
+                diceFive.setImage(UIImage(named: "Dice\(dieFiveNum)"), for: .normal)
+            }
+            
+            //decreas number of rolls remaining
+            rollsRemaining -= 1
+            rollsLeft.text = "\(rollsRemaining) Rolls Left"
         }
-        if dieTwoClicked == false {
-            diceTwo.setImage(UIImage(named: "Dice\(dieTwoNum)"), for: .normal)
+        else {
+            rollsLeft.text = "Take score before rolling!"
         }
-        if dieThreeClicked == false {
-            diceThree.setImage(UIImage(named: "Dice\(dieThreeNum)"), for: .normal)
-        }
-        if dieFourClicked == false {
-            diceFour.setImage(UIImage(named: "Dice\(dieFourNum)"), for: .normal)
-        }
-        if dieFiveClicked == false {
-            diceFive.setImage(UIImage(named: "Dice\(dieFiveNum)"), for: .normal)
-        }
-        
-        //decreas number of rolls remaining
-        rollsRemaining -= 1
-        rollsLeft.text = "\(rollsRemaining) Rolls Left"
     }
     
     //function to roll/not roll die one depending on if clicked
@@ -159,6 +171,10 @@ class ViewController: UIViewController {
         }
     }
     
+    //Scoring
+    @objc func oneLabelClicked(){
+        onesValue.text = "3"
+    }
     
 }
 
