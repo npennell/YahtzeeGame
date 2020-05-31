@@ -319,7 +319,7 @@ class ViewController: UIViewController {
             resetRoll()
         }
     }
-    //TODO: validate these scores
+
     @objc func threeKindLabelClicked(){
         if threeKindScored == false{
             threeKindScored = true
@@ -341,7 +341,8 @@ class ViewController: UIViewController {
     @objc func fullHouseLabelClicked(){
         if fullHouseScored == false{
             fullHouseScored = true
-            fullHouseValue.text = "25"
+            let score = fullHouseCheck()
+            fullHouseValue.text = "\(score)"
             fullLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
@@ -349,7 +350,8 @@ class ViewController: UIViewController {
     @objc func smStraightLabelClicked(){
         if smStraighScored == false{
             smStraighScored = true
-            smStraightValue.text = "30"
+            let score = smStraightCheck()
+            smStraightValue.text = "\(score)"
             smStraightLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
@@ -357,7 +359,8 @@ class ViewController: UIViewController {
     @objc func lgStraightLabelClicked(){
         if lgStraightScored == false{
             lgStraightScored = true
-            lgStraightValue.text = "40"
+            let score = lgStraightCheck()
+            lgStraightValue.text = "\(score)"
             lgStraightLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
@@ -421,7 +424,6 @@ class ViewController: UIViewController {
                 }
             }
         }
-        
         if kindValid == true {
             score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
         }
@@ -430,6 +432,60 @@ class ViewController: UIViewController {
         }
         
         return score
+    }
+    
+    func fullHouseCheck() -> Int {
+        //array of the dice values then sort
+        var dice = [dieOneNum, dieTwoNum, dieThreeNum, dieFourNum, dieFiveNum]
+        dice.sort()
+        
+        if ((dice[0] == dice[1] && dice[0] == dice[2]) && (dice[3] == dice[4])) ||
+            ((dice[0] == dice[1]) && (dice[2] == dice[3] && dice[2] == dice[4])){
+            return 25
+        }
+        else{
+            return 0
+        }
+    }
+    
+    func smStraightCheck() -> Int {
+        var dice = [dieOneNum, dieTwoNum, dieThreeNum, dieFourNum, dieFiveNum]
+        dice.sort()
+        
+        //check for possible duplicate, and move it to the back of the array
+        for i in 0...3 {
+            var holder = 0
+            if dice[i] == dice[i+1] {
+                holder = dice[i]
+                for j in i...3 {
+                    dice[j] = dice[j+1]
+                }
+                dice[4] = holder
+            }
+        }
+        if (dice[0] == 1 && dice[1] == 2 && dice[2] == 3 && dice[3] == 4) ||
+            (dice[0] == 2 && dice[1] == 3 && dice[2] == 4 && dice[3] == 5) ||
+            (dice[0] == 3 && dice[1] == 4 && dice[2] == 5 && dice[3] == 6) ||
+            (dice[1] == 1 && dice[2] == 2 && dice[3] == 3 && dice[4] == 4) ||
+            (dice[1] == 2 && dice[2] == 3 && dice[3] == 4 && dice[4] == 5) ||
+            (dice[1] == 3 && dice[2] == 4 && dice[3] == 5 && dice[4] == 6) {
+            return 30
+        }
+        else{
+            return 0
+        }
+    }
+    
+    func lgStraightCheck() -> Int {
+        var dice = [dieOneNum, dieTwoNum, dieThreeNum, dieFourNum, dieFiveNum]
+        dice.sort()
+        
+        if (dice[0] == 1 && dice[1] == 2 && dice[2] == 3 && dice[3] == 4 && dice[4] == 5) || (dice[0] == 2 && dice[1] == 3 && dice[2] == 4 && dice[3] == 5 && dice[4] == 6){
+            return 30
+        }
+        else {
+            return 0
+        }
     }
     
     func yahtzeeCheck(){
