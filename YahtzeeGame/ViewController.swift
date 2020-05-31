@@ -75,6 +75,14 @@ class ViewController: UIViewController {
     var dieFourClicked:Bool = false
     var dieFiveClicked:Bool = false
     
+    //check if scores have been taken
+    var onesScored = false
+    var twosScored = false
+    var threesScored = false
+    var foursScored = false
+    var fivesScored = false
+    var sixesScored = false
+    
     var rollsRemaining = 3
     
     override func viewDidLoad() {
@@ -106,6 +114,26 @@ class ViewController: UIViewController {
         let oneLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(oneLabelClicked))
         oneLabelTapped.numberOfTapsRequired = 1
         onesLabel.addGestureRecognizer(oneLabelTapped)
+        
+        let twoLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(twoLabelClicked))
+        twoLabelTapped.numberOfTapsRequired = 1
+        twosLabel.addGestureRecognizer(twoLabelTapped)
+        
+        let threeLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(threeLabelClicked))
+        threeLabelTapped.numberOfTapsRequired = 1
+        threesLabel.addGestureRecognizer(threeLabelTapped)
+        
+        let fourLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(fourLabelClicked))
+        fourLabelTapped.numberOfTapsRequired = 1
+        foursLabel.addGestureRecognizer(fourLabelTapped)
+        
+        let fiveLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(fiveLabelClicked))
+        fiveLabelTapped.numberOfTapsRequired = 1
+        fivesLabel.addGestureRecognizer(fiveLabelTapped)
+        
+        let sixLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(sixLabelClicked))
+        sixLabelTapped.numberOfTapsRequired = 1
+        sixesLabel.addGestureRecognizer(sixLabelTapped)
     }
 
     //Roll Button clicked
@@ -114,25 +142,24 @@ class ViewController: UIViewController {
         //don't re-roll if no more rolls left
         if rollsRemaining > 0 {
             
-            dieOneNum = Int.random(in: 1...6)
-            dieTwoNum = Int.random(in: 1...6)
-            dieThreeNum = Int.random(in: 1...6)
-            dieFourNum =  Int.random(in: 1...6)
-            dieFiveNum = Int.random(in: 1...6)
-            
             if dieOneClicked == false {
+                dieOneNum = Int.random(in: 1...6)
                 diceOne.image = UIImage(named: "Dice\(dieOneNum)")
             }
             if dieTwoClicked == false {
+                dieTwoNum = Int.random(in: 1...6)
                 diceTwo.image = UIImage(named: "Dice\(dieTwoNum)")
             }
             if dieThreeClicked == false {
+                dieThreeNum = Int.random(in: 1...6)
                 diceThree.image = UIImage(named: "Dice\(dieThreeNum)")
             }
             if dieFourClicked == false {
+                dieFourNum =  Int.random(in: 1...6)
                 diceFour.image = UIImage(named: "Dice\(dieFourNum)")
             }
             if dieFiveClicked == false {
+                dieFiveNum = Int.random(in: 1...6)
                 diceFive.image = UIImage(named: "Dice\(dieFiveNum)")
             }
             
@@ -193,48 +220,87 @@ class ViewController: UIViewController {
     
     //Scoring
     @objc func oneLabelClicked(){
-        if onesValue.text == "0"{
-            onesValue.text = "1"
-            rollsRemaining = 3
+        if onesScored == false{
+            onesScored = true
+            let score = checkForValue(value: 1)
+            onesValue.text = "\(score)"
             resetRoll()
         }
     }
     
     @objc func twoLabelClicked(){
-        if twosValue.text == "0"{
-            twosValue.text = "2"
-            rollsRemaining = 3
+        if twosScored == false{
+            twosScored = true
+            let score = checkForValue(value: 2)
+            twosValue.text = "\(score)"
             resetRoll()
         }
     }
     
     @objc func threeLabelClicked(){
-        if threesValue.text == "0"{
-            threesValue.text = "3"
-            rollsRemaining = 3
+        if threesScored == false{
+            threesScored = true
+            let score = checkForValue(value: 3)
+            threesValue.text = "\(score)"
             resetRoll()
         }
     }
     
     @objc func fourLabelClicked(){
-        if foursValue.text == "0"{
-            foursValue.text = "4"
-            rollsRemaining = 3
+        if foursScored == false{
+            foursScored = true
+            let score = checkForValue(value: 4)
+            foursValue.text = "\(score)"
             resetRoll()
         }
     }
     
     @objc func fiveLabelClicked(){
-        if fivesValue.text == "0"{
-            fivesValue.text = "5"
-            rollsRemaining = 3
+        if fivesScored == false{
+            fivesScored = true
+            let score = checkForValue(value: 5)
+            fivesValue.text = "\(score)"
+            resetRoll()
+        }
+    }
+    @objc func sixLabelClicked(){
+        if sixesScored == false{
+            sixesScored = true
+            let score = checkForValue(value: 6)
+            sixesValue.text = "\(score)"
             resetRoll()
         }
     }
     
+    //check the dice values to score
+    func checkForValue(value: Int) -> Int{
+        var score = 0
+        if dieOneNum == value {
+            score += value
+        }
+        if dieTwoNum == value {
+            score += value
+        }
+        if dieThreeNum == value {
+            score += value
+        }
+        if dieFourNum == value {
+            score += value
+        }
+        if dieFiveNum == value {
+            score += value
+        }
+
+        return score
+    }
     
+    //reset the dice and label for next turn
     func resetRoll(){
+        rollsRemaining = 3
         rollsLeft.text = "\(rollsRemaining) Rolls Left"
+        
+        checkTopFull()
+        //checkBottomFull()
         
         //reset the dice clicks
         dieOneClicked = false
@@ -242,6 +308,27 @@ class ViewController: UIViewController {
         dieThreeClicked = false
         dieFourClicked = false
         dieFiveClicked = false
+    }
+    
+    func checkTopFull(){
+        if onesScored == true && twosScored == true && threesScored == true
+            && foursScored == true && fivesScored == true && sixesScored == true {
+            var score = 0
+            let ones:Int? = Int(onesValue.text!)
+            let twos:Int? = Int(twosValue.text!)
+            let threes:Int? = Int(threesValue.text!)
+            let fours:Int? = Int(foursValue.text!)
+            let fives:Int? = Int(fivesValue.text!)
+            let sixes:Int? = Int(sixesValue.text!)
+            score = score + Int(ones!) + Int(twos!) + Int(threes!)
+                + Int(fours!) + Int(fives!) + Int(sixes!)
+            
+            if score > 63 {
+                score += 35
+                bonusValue.text = "35"
+            }
+            topTotalValue.text = "\(score)"
+        }
     }
 }
 
