@@ -82,6 +82,12 @@ class ViewController: UIViewController {
     var foursScored = false
     var fivesScored = false
     var sixesScored = false
+    var threeKindScored = false
+    var fourKindScored = false
+    var smStraighScored = false
+    var lgStraightScored = false
+    var yahtzeeScored = false
+    var chanceScored = false
     
     var rollsRemaining = 3
     
@@ -134,6 +140,30 @@ class ViewController: UIViewController {
         let sixLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(sixLabelClicked))
         sixLabelTapped.numberOfTapsRequired = 1
         sixesLabel.addGestureRecognizer(sixLabelTapped)
+        
+        let threeKindLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(threeKindLabelClicked))
+        threeKindLabelTapped.numberOfTapsRequired = 1
+        threeKindLabel.addGestureRecognizer(threeKindLabelTapped)
+        
+        let fourKindLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(fourKindLabelClicked))
+        fourKindLabelTapped.numberOfTapsRequired = 1
+        fourKindLabel.addGestureRecognizer(fourKindLabelTapped)
+        
+        let smStraightLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(smStraightLabelClicked))
+        smStraightLabelTapped.numberOfTapsRequired = 1
+        smStraightLabel.addGestureRecognizer(smStraightLabelTapped)
+        
+        let lgStraightLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(lgStraightLabelClicked))
+        lgStraightLabelTapped.numberOfTapsRequired = 1
+        lgStraightLabel.addGestureRecognizer(lgStraightLabelTapped)
+        
+        let yahtzeeLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(yahtzeeLabelClicked))
+        yahtzeeLabelTapped.numberOfTapsRequired = 1
+        yahtzeeLabel.addGestureRecognizer(yahtzeeLabelTapped)
+        
+        let chanceLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(chanceLabelClicked))
+        chanceLabelTapped.numberOfTapsRequired = 1
+        chanceLabel.addGestureRecognizer(chanceLabelTapped)
     }
 
     //Roll Button clicked
@@ -218,7 +248,7 @@ class ViewController: UIViewController {
         }
     }
     
-    //Scoring
+    //Functionality when the labels are clicked
     @objc func oneLabelClicked(){
         if onesScored == false{
             onesScored = true
@@ -227,7 +257,6 @@ class ViewController: UIViewController {
             resetRoll()
         }
     }
-    
     @objc func twoLabelClicked(){
         if twosScored == false{
             twosScored = true
@@ -236,7 +265,6 @@ class ViewController: UIViewController {
             resetRoll()
         }
     }
-    
     @objc func threeLabelClicked(){
         if threesScored == false{
             threesScored = true
@@ -245,7 +273,6 @@ class ViewController: UIViewController {
             resetRoll()
         }
     }
-    
     @objc func fourLabelClicked(){
         if foursScored == false{
             foursScored = true
@@ -254,7 +281,6 @@ class ViewController: UIViewController {
             resetRoll()
         }
     }
-    
     @objc func fiveLabelClicked(){
         if fivesScored == false{
             fivesScored = true
@@ -270,6 +296,27 @@ class ViewController: UIViewController {
             sixesValue.text = "\(score)"
             resetRoll()
         }
+    }
+    @objc func threeKindLabelClicked(){
+        
+    }
+    @objc func fourKindLabelClicked(){
+        
+    }
+    @objc func fullHouseLabelClicked(){
+        
+    }
+    @objc func smStraightLabelClicked(){
+        
+    }
+    @objc func lgStraightLabelClicked(){
+        
+    }
+    @objc func yahtzeeLabelClicked(){
+        
+    }
+    @objc func chanceLabelClicked(){
+        
     }
     
     //check the dice values to score
