@@ -58,6 +58,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var chanceValue: UILabel!
     @IBOutlet weak var bottomTotalValue: UILabel!
     
+    @IBOutlet weak var finalScore: UILabel!
+    
     //various labels/buttons
     @IBOutlet weak var rollsLeft: UILabel!
     
@@ -84,6 +86,7 @@ class ViewController: UIViewController {
     var sixesScored = false
     var threeKindScored = false
     var fourKindScored = false
+    var fullHouseScored = false
     var smStraighScored = false
     var lgStraightScored = false
     var yahtzeeScored = false
@@ -149,6 +152,10 @@ class ViewController: UIViewController {
         fourKindLabelTapped.numberOfTapsRequired = 1
         fourKindLabel.addGestureRecognizer(fourKindLabelTapped)
         
+        let fullHouseLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(fullHouseLabelClicked))
+        fullHouseLabelTapped.numberOfTapsRequired = 1
+        fullLabel.addGestureRecognizer(fullHouseLabelTapped)
+        
         let smStraightLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(smStraightLabelClicked))
         smStraightLabelTapped.numberOfTapsRequired = 1
         smStraightLabel.addGestureRecognizer(smStraightLabelTapped)
@@ -167,7 +174,6 @@ class ViewController: UIViewController {
     }
 
     //Roll Button clicked
-    //randomly generates roll for the five dice
     @IBAction func rollButton(_ sender: Any) {
         //don't re-roll if no more rolls left
         if rollsRemaining > 0 {
@@ -297,26 +303,56 @@ class ViewController: UIViewController {
             resetRoll()
         }
     }
+    //TODO: validate these scores
     @objc func threeKindLabelClicked(){
-        
+        if threeKindScored == false{
+            threeKindScored = true
+            calculateThreeKind()
+            resetRoll()
+        }
     }
     @objc func fourKindLabelClicked(){
-        
+        if fourKindScored == false{
+            fourKindScored = true
+            calculateFourKind()
+            resetRoll()
+        }
     }
     @objc func fullHouseLabelClicked(){
-        
+        if fullHouseScored == false{
+            fullHouseScored = true
+            fullHouseValue.text = "25"
+            resetRoll()
+        }
     }
     @objc func smStraightLabelClicked(){
-        
+        if smStraighScored == false{
+            smStraighScored = true
+            smStraightValue.text = "30"
+            resetRoll()
+        }
     }
     @objc func lgStraightLabelClicked(){
-        
+        if lgStraightScored == false{
+            lgStraightScored = true
+            lgStraightValue.text = "40"
+            resetRoll()
+        }
     }
     @objc func yahtzeeLabelClicked(){
-        
+        if yahtzeeScored == false{
+            yahtzeeScored = true
+            yahtzeeValue.text = "50"
+            resetRoll()
+        }
     }
     @objc func chanceLabelClicked(){
-        
+        if chanceScored == false{
+            chanceScored = true
+            let score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
+            chanceValue.text = "\(score)"
+            resetRoll()
+        }
     }
     
     //check the dice values to score
@@ -341,13 +377,28 @@ class ViewController: UIViewController {
         return score
     }
     
+    func calculateThreeKind(){
+        let score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
+        threeKindValue.text = "\(score)"
+    }
+    
+    func calculateFourKind(){
+        let score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
+        fourKindValue.text = "\(score)"
+    }
+    
     //reset the dice and label for next turn
     func resetRoll(){
         rollsRemaining = 3
         rollsLeft.text = "\(rollsRemaining) Rolls Left"
         
-        checkTopFull()
-        //checkBottomFull()
+        if checkTopFull() == true && checkBottomFull() == true {
+            var score = 0
+            let top:Int? = Int(topTotalValue.text!)
+            let bottom:Int? = Int(bottomTotalValue.text!)
+            score = Int(top!) + Int(bottom!)
+            finalScore.text = "Final Score\n\(score)"
+        }
         
         //reset the dice clicks
         dieOneClicked = false
@@ -357,7 +408,7 @@ class ViewController: UIViewController {
         dieFiveClicked = false
     }
     
-    func checkTopFull(){
+    func checkTopFull() -> Bool{
         if onesScored == true && twosScored == true && threesScored == true
             && foursScored == true && fivesScored == true && sixesScored == true {
             var score = 0
@@ -375,7 +426,79 @@ class ViewController: UIViewController {
                 bonusValue.text = "35"
             }
             topTotalValue.text = "\(score)"
+            return true
         }
+        return false
     }
+    func checkBottomFull() -> Bool{
+        if threeKindScored == true && fourKindScored == true && fullHouseScored == true && smStraighScored == true && lgStraightScored == true && yahtzeeScored == true && chanceScored == true {
+            var score = 0
+            let threeKind:Int? = Int(threeKindValue.text!)
+            let fourKind:Int? = Int(fourKindValue.text!)
+            let fullHouse:Int? = Int(fullHouseValue.text!)
+            let sm:Int? = Int(smStraightValue.text!)
+            let lg:Int? = Int(lgStraightValue.text!)
+            let yahtzee:Int? = Int(yahtzeeValue.text!)
+            let chance:Int? = Int(chanceValue.text!)
+            score = Int(threeKind!) + Int(fourKind!) + Int(fullHouse!) + Int(sm!) + Int(lg!) + Int(yahtzee!) + Int(chance!)
+            bottomTotalValue.text = "\(score)"
+            return true
+        }
+        return false
+    }
+    
+    @IBAction func newGame(_ sender: Any) {
+        //reset rolls left
+        rollsRemaining = 3
+        rollsLeft.text = "\(rollsRemaining) Rolls Left"
+        
+        //set variables to false
+        dieOneClicked = false
+        dieTwoClicked = false
+        dieThreeClicked = false
+        dieFourClicked = false
+        dieFiveClicked = false
+        onesScored = false
+        twosScored = false
+        threesScored = false
+        foursScored = false
+        fivesScored = false
+        sixesScored = false
+        threeKindScored = false
+        fourKindScored = false
+        fullHouseScored = false
+        smStraighScored = false
+        lgStraightScored = false
+        yahtzeeScored = false
+        chanceScored = false
+        
+        //reset all scores
+        onesValue.text = "0"
+        twosValue.text = "0"
+        threesValue.text = "0"
+        foursValue.text = "0"
+        fivesValue.text = "0"
+        sixesValue.text = "0"
+        bonusValue.text = "0"
+        topTotalValue.text = "0"
+        threeKindValue.text = "0"
+        fourKindValue.text = "0"
+        fullHouseValue.text = "0"
+        smStraightValue.text = "0"
+        lgStraightValue.text = "0"
+        yahtzeeValue.text = "0"
+        chanceValue.text = "0"
+        bottomTotalValue.text = "0"
+        finalScore.text = "Final Score\n0"
+
+        //reset dice to one
+        diceOne.image = UIImage(named:"Dice1")
+        diceTwo.image = UIImage(named:"Dice1")
+        diceThree.image = UIImage(named:"Dice1")
+        diceFour.image = UIImage(named:"Dice1")
+        diceFive.image = UIImage(named:"Dice1")
+    }
+    
+    
 }
 

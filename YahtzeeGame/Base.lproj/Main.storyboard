@@ -295,6 +295,9 @@
                                         <state key="normal" title="New Game?">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="newGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="D8s-te-rlY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -334,6 +337,7 @@
                         <outlet property="diceOne" destination="Xtc-MY-aNK" id="wBV-6x-dud"/>
                         <outlet property="diceThree" destination="H0y-kO-kKr" id="P9F-po-TYP"/>
                         <outlet property="diceTwo" destination="S8k-QW-2uP" id="4Op-2h-SjK"/>
+                        <outlet property="finalScore" destination="aWL-K3-Ce0" id="t4E-M9-u1X"/>
                         <outlet property="fivesLabel" destination="SiE-i0-qea" id="LQ6-FX-22N"/>
                         <outlet property="fivesValue" destination="HCW-JI-yeS" id="W6l-yz-a8s"/>
                         <outlet property="fourKindLabel" destination="Xb9-Mk-gvB" id="qE7-5K-nDU"/>
