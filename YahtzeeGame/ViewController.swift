@@ -270,6 +270,7 @@ class ViewController: UIViewController {
             onesScored = true
             let score = checkForValue(value: 1)
             onesValue.text = "\(score)"
+            onesLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -278,6 +279,7 @@ class ViewController: UIViewController {
             twosScored = true
             let score = checkForValue(value: 2)
             twosValue.text = "\(score)"
+            twosLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -286,6 +288,7 @@ class ViewController: UIViewController {
             threesScored = true
             let score = checkForValue(value: 3)
             threesValue.text = "\(score)"
+            threesLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -294,6 +297,7 @@ class ViewController: UIViewController {
             foursScored = true
             let score = checkForValue(value: 4)
             foursValue.text = "\(score)"
+            foursLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -302,6 +306,7 @@ class ViewController: UIViewController {
             fivesScored = true
             let score = checkForValue(value: 5)
             fivesValue.text = "\(score)"
+            fivesLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -310,6 +315,7 @@ class ViewController: UIViewController {
             sixesScored = true
             let score = checkForValue(value: 6)
             sixesValue.text = "\(score)"
+            sixesLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -319,6 +325,7 @@ class ViewController: UIViewController {
             threeKindScored = true
             let score = calculateKind(typeOfKind: 3)
             threeKindValue.text = "\(score)"
+            threeKindLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -327,6 +334,7 @@ class ViewController: UIViewController {
             fourKindScored = true
             let score = calculateKind(typeOfKind: 4)
             fourKindValue.text = "\(score)"
+            fourKindLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -334,6 +342,7 @@ class ViewController: UIViewController {
         if fullHouseScored == false{
             fullHouseScored = true
             fullHouseValue.text = "25"
+            fullLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -341,6 +350,7 @@ class ViewController: UIViewController {
         if smStraighScored == false{
             smStraighScored = true
             smStraightValue.text = "30"
+            smStraightLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -348,6 +358,7 @@ class ViewController: UIViewController {
         if lgStraightScored == false{
             lgStraightScored = true
             lgStraightValue.text = "40"
+            lgStraightLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -355,6 +366,7 @@ class ViewController: UIViewController {
         if yahtzeeScored == false{
             yahtzeeScored = true
             yahtzeeCheck()
+            yahtzeeLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -363,6 +375,7 @@ class ViewController: UIViewController {
             chanceScored = true
             let score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
             chanceValue.text = "\(score)"
+            chanceLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
             resetRoll()
         }
     }
@@ -419,11 +432,6 @@ class ViewController: UIViewController {
         return score
     }
     
-    func calculateFourKind(){
-        let score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
-        fourKindValue.text = "\(score)"
-    }
-    
     func yahtzeeCheck(){
         if dieOneNum == dieTwoNum && dieOneNum == dieThreeNum && dieOneNum == dieFourNum
             && dieOneNum == dieFiveNum {
@@ -458,6 +466,7 @@ class ViewController: UIViewController {
         diceThree.image = UIImage(named:"Dice\(dieThreeNum)")
         diceFour.image = UIImage(named:"Dice\(dieFourNum)")
         diceFive.image = UIImage(named:"Dice\(dieFiveNum)")
+        
     }
     
     func checkTopFull() -> Bool{
@@ -550,11 +559,28 @@ class ViewController: UIViewController {
         diceFour.image = UIImage(named:"Dice1")
         diceFive.image = UIImage(named:"Dice1")
         
+        //start dice all at one
         dieOneNum = 1
         dieTwoNum = 1
         dieThreeNum = 1
         dieFourNum = 1
         dieFiveNum = 1
+        
+        //change label fonts back to normal
+        onesLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        twosLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        threesLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        foursLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        fivesLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        sixesLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        threeKindLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        fourKindLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        fullLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        smStraightLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        lgStraightLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        yahtzeeLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+        chanceLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
+    
     }
     
     
