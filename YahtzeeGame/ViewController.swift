@@ -453,11 +453,11 @@ class ViewController: UIViewController {
         dieThreeClicked = false
         dieFourClicked = false
         dieFiveClicked = false
-        diceOne.image = UIImage(named:"Dice1")
-        diceTwo.image = UIImage(named:"Dice1")
-        diceThree.image = UIImage(named:"Dice1")
-        diceFour.image = UIImage(named:"Dice1")
-        diceFive.image = UIImage(named:"Dice1")
+        diceOne.image = UIImage(named:"Dice\(dieOneNum)")
+        diceTwo.image = UIImage(named:"Dice\(dieTwoNum)")
+        diceThree.image = UIImage(named:"Dice\(dieThreeNum)")
+        diceFour.image = UIImage(named:"Dice\(dieFourNum)")
+        diceFive.image = UIImage(named:"Dice\(dieFiveNum)")
     }
     
     func checkTopFull() -> Bool{
