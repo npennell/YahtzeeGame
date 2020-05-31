@@ -317,14 +317,16 @@ class ViewController: UIViewController {
     @objc func threeKindLabelClicked(){
         if threeKindScored == false{
             threeKindScored = true
-            calculateThreeKind()
+            let score = calculateKind(typeOfKind: 3)
+            threeKindValue.text = "\(score)"
             resetRoll()
         }
     }
     @objc func fourKindLabelClicked(){
         if fourKindScored == false{
             fourKindScored = true
-            calculateFourKind()
+            let score = calculateKind(typeOfKind: 4)
+            fourKindValue.text = "\(score)"
             resetRoll()
         }
     }
@@ -387,9 +389,34 @@ class ViewController: UIViewController {
         return score
     }
     
-    func calculateThreeKind(){
-        let score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
-        threeKindValue.text = "\(score)"
+    func calculateKind(typeOfKind:Int) -> Int{
+        var kindValid = false
+        var score = 0
+        
+        //put dice values in array
+        let diceValues = [dieOneNum, dieTwoNum, dieThreeNum, dieFourNum, dieFiveNum]
+        
+        //check for three kind
+        for i in 1...6 {
+            var count = 0
+            for j in 0...4 {
+                if diceValues[j] == i {
+                    count += 1
+                }
+                if count > (typeOfKind - 1) {
+                    kindValid = true
+                }
+            }
+        }
+        
+        if kindValid == true {
+            score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
+        }
+        else {
+            score = 0
+        }
+        
+        return score
     }
     
     func calculateFourKind(){
