@@ -352,7 +352,7 @@ class ViewController: UIViewController {
     @objc func yahtzeeLabelClicked(){
         if yahtzeeScored == false{
             yahtzeeScored = true
-            yahtzeeValue.text = "50"
+            yahtzeeCheck()
             resetRoll()
         }
     }
@@ -395,6 +395,16 @@ class ViewController: UIViewController {
     func calculateFourKind(){
         let score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
         fourKindValue.text = "\(score)"
+    }
+    
+    func yahtzeeCheck(){
+        if dieOneNum == dieTwoNum && dieOneNum == dieThreeNum && dieOneNum == dieFourNum
+            && dieOneNum == dieFiveNum {
+            yahtzeeValue.text = "50"
+        }
+        else {
+            yahtzeeValue.text = "0"
+        }
     }
     
     //reset the dice and label for next turn
