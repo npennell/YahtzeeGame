@@ -10,14 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    //Dice Outlets
+    //Dice Image Outlets
     @IBOutlet weak var diceOne: UIImageView!
     @IBOutlet weak var diceTwo: UIImageView!
     @IBOutlet weak var diceThree: UIImageView!
     @IBOutlet weak var diceFour: UIImageView!
     @IBOutlet weak var diceFive: UIImageView!
     
-    //Scoreboard
+    //Scoreboard Variables
     //Top Score Labels
     @IBOutlet weak var onesLabel: UILabel!
     @IBOutlet weak var twosLabel: UILabel!
@@ -63,21 +63,21 @@ class ViewController: UIViewController {
     //various labels/buttons
     @IBOutlet weak var rollsLeft: UILabel!
     
-    //die values
+    //Die values variables
     var dieOneNum = 1
     var dieTwoNum = 1
     var dieThreeNum = 1
     var dieFourNum = 1
     var dieFiveNum = 1
     
-    //Check if dice have been clicked
+    //Trigger variables to check if dice have been clicked
     var dieOneClicked:Bool = false
     var dieTwoClicked:Bool = false
     var dieThreeClicked:Bool = false
     var dieFourClicked:Bool = false
     var dieFiveClicked:Bool = false
     
-    //check if scores have been taken
+    //Trigger variables to check if scores have been taken
     var onesScored = false
     var twosScored = false
     var threesScored = false
@@ -97,7 +97,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        //setting up dice gestures
+        //Setting up dice gestures
         let diceOneTapped = UITapGestureRecognizer.init(target: self, action: #selector(diceOneClicked))
         diceOneTapped.numberOfTapsRequired = 1
         diceOne.addGestureRecognizer(diceOneTapped)
@@ -119,7 +119,7 @@ class ViewController: UIViewController {
         diceFive.addGestureRecognizer(diceFiveTapped)
         
         
-        //setting up score label gestures
+        //Setting up score label gestures
         let oneLabelTapped = UITapGestureRecognizer.init(target: self, action: #selector(oneLabelClicked))
         oneLabelTapped.numberOfTapsRequired = 1
         onesLabel.addGestureRecognizer(oneLabelTapped)
@@ -174,8 +174,9 @@ class ViewController: UIViewController {
     }
 
     //Roll Button clicked
+    //Assigns random number to each dice and minuses one from rolls remaining variable and updates rolls remaining label
     @IBAction func rollButton(_ sender: Any) {
-        //don't re-roll if no more rolls left
+        //Stops rolling if no rolls left
         if rollsRemaining > 0 {
             
             if dieOneClicked == false {
@@ -209,6 +210,7 @@ class ViewController: UIViewController {
     }
     
     //Functionality of dice when clicked
+    //Updates the clicked trigger and changes the colour of the dice image to grey when clicked or white when clicked
     @objc func diceOneClicked(){
         if dieOneClicked == false {
             dieOneClicked = true
@@ -219,7 +221,6 @@ class ViewController: UIViewController {
             diceOne.image = UIImage(named:"Dice\(dieOneNum)")
         }
     }
-    
     @objc func diceTwoClicked(){
         if dieTwoClicked == false {
             dieTwoClicked = true
@@ -230,7 +231,6 @@ class ViewController: UIViewController {
             diceTwo.image = UIImage(named:"Dice\(dieTwoNum)")
         }
     }
-    
     @objc func diceThreeClicked(){
         if dieThreeClicked == false {
             dieThreeClicked = true
@@ -241,7 +241,6 @@ class ViewController: UIViewController {
             diceThree.image = UIImage(named:"Dice\(dieThreeNum)")
         }
     }
-    
     @objc func diceFourClicked(){
         if dieFourClicked == false {
             dieFourClicked = true
@@ -252,7 +251,6 @@ class ViewController: UIViewController {
             diceFour.image = UIImage(named:"Dice\(dieFourNum)")
         }
     }
-    
     @objc func diceFiveClicked(){
         if dieFiveClicked == false {
             dieFiveClicked = true
@@ -265,6 +263,7 @@ class ViewController: UIViewController {
     }
     
     //Functionality when the labels are clicked
+    //sets scored triggers, fills in the score and changes the font to bold
     @objc func oneLabelClicked(){
         if onesScored == false{
             onesScored = true
@@ -319,7 +318,6 @@ class ViewController: UIViewController {
             resetRoll()
         }
     }
-
     @objc func threeKindLabelClicked(){
         if threeKindScored == false{
             threeKindScored = true
@@ -383,7 +381,7 @@ class ViewController: UIViewController {
         }
     }
     
-    //check the dice values to score
+    //Adding up dice values to get score for selected value (scoring for 'top half')
     func checkForValue(value: Int) -> Int{
         var score = 0
         if dieOneNum == value {
@@ -401,10 +399,10 @@ class ViewController: UIViewController {
         if dieFiveNum == value {
             score += value
         }
-
         return score
     }
     
+    //Function to check for a three or four of a kind and returns the score
     func calculateKind(typeOfKind:Int) -> Int{
         var kindValid = false
         var score = 0
@@ -412,7 +410,7 @@ class ViewController: UIViewController {
         //put dice values in array
         let diceValues = [dieOneNum, dieTwoNum, dieThreeNum, dieFourNum, dieFiveNum]
         
-        //check for three kind
+        //check for three or four of a kind depenings on the typeOfKind variable
         for i in 1...6 {
             var count = 0
             for j in 0...4 {
@@ -424,9 +422,12 @@ class ViewController: UIViewController {
                 }
             }
         }
+        
+        //if it is a type of kind, calculate the score
         if kindValid == true {
             score = dieOneNum + dieTwoNum + dieThreeNum + dieFourNum + dieFiveNum
         }
+        //else score 0
         else {
             score = 0
         }
@@ -434,11 +435,14 @@ class ViewController: UIViewController {
         return score
     }
     
+    //Function to check for a full house
     func fullHouseCheck() -> Int {
         //array of the dice values then sort
         var dice = [dieOneNum, dieTwoNum, dieThreeNum, dieFourNum, dieFiveNum]
         dice.sort()
         
+        //check for full house
+        //if first three dice are the same value then last two are the same or first two are the same then the last three are the same
         if ((dice[0] == dice[1] && dice[0] == dice[2]) && (dice[3] == dice[4])) ||
             ((dice[0] == dice[1]) && (dice[2] == dice[3] && dice[2] == dice[4])){
             return 25
@@ -448,7 +452,9 @@ class ViewController: UIViewController {
         }
     }
     
+    //Function to check for a small straight
     func smStraightCheck() -> Int {
+        //array of dice values then sort
         var dice = [dieOneNum, dieTwoNum, dieThreeNum, dieFourNum, dieFiveNum]
         dice.sort()
         
@@ -463,6 +469,8 @@ class ViewController: UIViewController {
                 dice[4] = holder
             }
         }
+        
+        //check for all possible ways for small straight
         if (dice[0] == 1 && dice[1] == 2 && dice[2] == 3 && dice[3] == 4) ||
             (dice[0] == 2 && dice[1] == 3 && dice[2] == 4 && dice[3] == 5) ||
             (dice[0] == 3 && dice[1] == 4 && dice[2] == 5 && dice[3] == 6) ||
@@ -476,10 +484,13 @@ class ViewController: UIViewController {
         }
     }
     
+    //Function to check for large straight
     func lgStraightCheck() -> Int {
+        //array of dice values then sort
         var dice = [dieOneNum, dieTwoNum, dieThreeNum, dieFourNum, dieFiveNum]
         dice.sort()
         
+        //check for the two possible ways for large straight
         if (dice[0] == 1 && dice[1] == 2 && dice[2] == 3 && dice[3] == 4 && dice[4] == 5) || (dice[0] == 2 && dice[1] == 3 && dice[2] == 4 && dice[3] == 5 && dice[4] == 6){
             return 30
         }
@@ -488,7 +499,9 @@ class ViewController: UIViewController {
         }
     }
     
+    //Function to check for a yahtzee
     func yahtzeeCheck(){
+        //check if dice values are all the same number
         if dieOneNum == dieTwoNum && dieOneNum == dieThreeNum && dieOneNum == dieFourNum
             && dieOneNum == dieFiveNum {
             yahtzeeValue.text = "50"
@@ -498,11 +511,13 @@ class ViewController: UIViewController {
         }
     }
     
-    //reset the dice and label for next turn
+    //Function to reset the dice and labels for next turn
     func resetRoll(){
         rollsRemaining = 3
         rollsLeft.text = "\(rollsRemaining) Rolls Left"
         
+        //check if all the scores have been taken
+        //if yes, add up total score
         if checkTopFull() == true && checkBottomFull() == true {
             var score = 0
             let top:Int? = Int(topTotalValue.text!)
@@ -511,12 +526,14 @@ class ViewController: UIViewController {
             finalScore.text = "Final Score\n\(score)"
         }
         
-        //reset the dice clicks
+        //reset the dice clicked trigger variables
         dieOneClicked = false
         dieTwoClicked = false
         dieThreeClicked = false
         dieFourClicked = false
         dieFiveClicked = false
+        
+        //reset the dice images
         diceOne.image = UIImage(named:"Dice\(dieOneNum)")
         diceTwo.image = UIImage(named:"Dice\(dieTwoNum)")
         diceThree.image = UIImage(named:"Dice\(dieThreeNum)")
@@ -525,10 +542,13 @@ class ViewController: UIViewController {
         
     }
     
+    //Function to check if the 'top' score board is filled and check for the 'top bonus'
     func checkTopFull() -> Bool{
+        //check if all the top scored triggers are true
         if onesScored == true && twosScored == true && threesScored == true
             && foursScored == true && fivesScored == true && sixesScored == true {
             var score = 0
+            //get the integer values from the text labels to add up score
             let ones:Int? = Int(onesValue.text!)
             let twos:Int? = Int(twosValue.text!)
             let threes:Int? = Int(threesValue.text!)
@@ -538,6 +558,7 @@ class ViewController: UIViewController {
             score = score + Int(ones!) + Int(twos!) + Int(threes!)
                 + Int(fours!) + Int(fives!) + Int(sixes!)
             
+            //check for the top bonus, if the top score is 63 or higher then add 35 to the top score
             if score >= 63 {
                 score += 35
                 bonusValue.text = "35"
@@ -547,9 +568,13 @@ class ViewController: UIViewController {
         }
         return false
     }
+    
+    //Function to check if the 'bottom' score board is filled
     func checkBottomFull() -> Bool{
+        //check if all the bottom scored triggers are true
         if threeKindScored == true && fourKindScored == true && fullHouseScored == true && smStraighScored == true && lgStraightScored == true && yahtzeeScored == true && chanceScored == true {
             var score = 0
+            //get the integer values from the text labels to add up score
             let threeKind:Int? = Int(threeKindValue.text!)
             let fourKind:Int? = Int(fourKindValue.text!)
             let fullHouse:Int? = Int(fullHouseValue.text!)
@@ -564,12 +589,13 @@ class ViewController: UIViewController {
         return false
     }
     
+    //Function to reset the game for a new game
     @IBAction func newGame(_ sender: Any) {
         //reset rolls left
         rollsRemaining = 3
         rollsLeft.text = "\(rollsRemaining) Rolls Left"
         
-        //set variables to false
+        //set clicked and scored trigger variables to false
         dieOneClicked = false
         dieTwoClicked = false
         dieThreeClicked = false
@@ -589,7 +615,7 @@ class ViewController: UIViewController {
         yahtzeeScored = false
         chanceScored = false
         
-        //reset all scores
+        //reset all score labels
         onesValue.text = "0"
         twosValue.text = "0"
         threesValue.text = "0"
@@ -636,9 +662,6 @@ class ViewController: UIViewController {
         lgStraightLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
         yahtzeeLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
         chanceLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .regular)
-    
     }
-    
-    
 }
 
